@@ -1,3 +1,3 @@
 # csci325Project
 
-Project of CSCI325
+Project for CSCI325

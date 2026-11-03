@@ -61,38 +61,84 @@ int main(){
     string test; //This is just to make getline work
     cout << "How many items would you like to add?: ";
     int lop=0;
-    cin >> lop; //This is the initial loop for the making of the list
+
+
+    while (!(cin >> lop)){
+        cout << "Pick a whole number: ";
+        cin.clear(); 
+        cin.ignore(10000, '\n'); 
+    }
+    //cin >> lop; //This is the initial loop for the making of the list
+
+
+
     getline(cin, test); //This is just to make getline work
     for (int i=0; i<lop; i++){
         add(head);
     }
+
     cout << endl;
     display(head);
 
     bool looper=true;
     while (looper==true){ //Loops the program until the user is done.
         int choice=0;
-        cout << "What would you like to do?" << endl;
-        cout << "[1] Display the list" << endl;
-        cout << "[2] Mark whether items are not started, started, or completed" << endl;
-        cout << "[3] Add to the end of the list" << endl;
-        cout << "[4] Quit" << endl;
+        cin.clear();
+        cout << "What would you like to do?\n";
+        cout << "[1] Display the list\n";
+        cout << "[2] Mark whether items are not started, started, or completed\n";
+        cout << "[3] Add to the end of the list\n";
+        cout << "[4] Quit\n";
         cout << "> ";
-        cin >> choice;
-        if (choice==1) display(head); //Displays the list if they want
-        else if (choice == 2) cout << "Not yet" << endl; //Need the vector to do this
-        else if (choice == 3){
-            int lopt;
-            cout << "How many items would you like to add?: ";
-            cin >> lopt;
-            getline(cin, test); //This is just to make getline work
-            for (int i=0; i<lop; i++) add(head);
+
+        while (!(cin >>choice)){ //prevents an invalid input, clears the input, and resets the input error
+            cout << "Invalid input\n> ";
+            cin.clear(); 
+            cin.ignore(10000, '\n'); 
+        } 
+        //cin >> choice;
+
+        switch(choice){
+            case 1: 
+                display(head);
+                break;
+
+            case 2:
+                cout << "Not implemented yet";
+                break;
+
+            case 3:
+                int lopt;
+                cout << "How many items would you like to add?: ";
+
+                while (!(cin >> lopt)){
+                    cout << "Invalid input:  ";
+                    cin.clear(); 
+                    cin.ignore(10000, '\n'); 
+                }
+                /*
+                cin >> lopt;
+                getline(cin, test); //This is just to make getline work*/
+                
+                //LOGIC ERROR OCCURING HERE, too tired to fix it rn @RoseEvelynRichards
+                for (int i=0; i<lop; i++) add(head);
+                break;
+
+            case 4:
+                looper = false;
+                break;
+            
+            default:
+                cout << "Invalid input \n";
+                break;
         }
-        else if (choice == 4) break;
-        cout << endl;
+
+        //If there is an option to display the list why does it display it anyways?
+        /*
         if (choice!=1){
             display(head);
             cout << endl;
-        }
+        }*/
     }
+    return 0;
 }
