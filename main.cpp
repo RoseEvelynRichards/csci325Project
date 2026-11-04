@@ -52,13 +52,12 @@ void display(Node* front) {
 void add(Node*& head){
     string listpoint; //The actual items of the list
     cout << "Add an item to the list: ";
-    getline(cin, listpoint);
+    getline(cin >> ws, listpoint); //std::ws extracts whitespace in buffer
     insertEnd(head, listpoint);
 }
 
 int main(){
     Node* head = nullptr;
-    string test; //This is just to make getline work
     cout << "How many items would you like to add?: ";
     int lop=0;
 
@@ -72,7 +71,7 @@ int main(){
 
 
 
-    getline(cin, test); //This is just to make getline work
+    //getline(cin, test); //This is just to make getline work
     for (int i=0; i<lop; i++){
         add(head);
     }
@@ -116,12 +115,8 @@ int main(){
                     cin.clear(); 
                     cin.ignore(10000, '\n'); 
                 }
-                /*
-                cin >> lopt;
-                getline(cin, test); //This is just to make getline work*/
                 
-                //LOGIC ERROR OCCURING HERE, too tired to fix it rn @RoseEvelynRichards
-                for (int i=0; i<lop; i++) add(head);
+                for (int i=0; i<lopt; i++) add(head);
                 break;
 
             case 4:
@@ -131,6 +126,7 @@ int main(){
             default:
                 cout << "Invalid input \n";
                 break;
+        
         }
 
         //If there is an option to display the list why does it display it anyways?
@@ -139,6 +135,7 @@ int main(){
             display(head);
             cout << endl;
         }*/
+    cout << endl;
     }
     return 0;
 }
