@@ -60,10 +60,10 @@ int main(){
     Node* head = nullptr;
     string test; //This is just to make getline work
     cout << "How many items would you like to add?: ";
-    int lop=0;
-    cin >> lop; //This is the initial loop for the making of the list
+    int loop1=0;
+    cin >> loop1; //This is the initial loop for the making of the list
     getline(cin, test); //This is just to make getline work
-    for (int i=0; i<lop; i++){
+    for (int i=0; i<loop1; i++){
         add(head);
     }
     cout << endl;
@@ -82,11 +82,11 @@ int main(){
         if (choice==1) display(head); //Displays the list if they want
         else if (choice == 2) cout << "Not yet" << endl; //Need the vector to do this
         else if (choice == 3){
-            int lopt;
+            int loop2;
             cout << "How many items would you like to add?: ";
-            cin >> lopt;
+            cin >> loop2;
             getline(cin, test); //This is just to make getline work
-            for (int i=0; i<lop; i++) add(head);
+            for (int i=0; i<loop2; i++) add(head);
         }
         else if (choice == 4) break;
         cout << endl;
