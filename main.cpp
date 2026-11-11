@@ -74,16 +74,20 @@ int main(){
     string test;
     cout << "How many items would you like to add?: ";
     int loop1=0;
-    cin >> loop1; //This is the initial loop for the making of the list
+
+    //prevents an invalid input, clears the input, and resets the input error
+    while (!(cin >> loop1)){
+        cout << "Pick a whole number: ";
+        cin.clear();
+        cin.ignore(10000, '\n');
+    }
     getline(cin, test); //This is just to make getline work
+
+    vector<int> status;
     for (int i=0; i<loop1; i++){
         add(head);
-    }
-    vector<int> status;
-    for (int i = 0; i < loop1; i++) {
         status.push_back(0);
     }
-    
 
     cout << endl;
     display(head, status);
@@ -98,24 +102,47 @@ int main(){
         cout << "[3] Add to the end of the list\n";
         cout << "[4] Quit\n";
         cout << "> ";
-        cin >> choice;
-        if (choice==1) display(head, status); //Displays the list if they want
-        else if (choice == 2) cout << "Not yet" << endl; //Need the vector to do this
-        else if (choice == 3){
-            int loop2;
-            cout << "How many items would you like to add?: ";
-            cin >> loop2;
-            getline(cin, test); //This is just to make getline work
-            for (int i=0; i<loop2; i++) {
-                add(head);
-                status.push_back(0);
-            }
+
+        //prevents an invalid input, clears the input, and resets the input error
+        while (!(cin >>choice)){ 
+            cout << "Invalid input\n> ";
+            cin.clear(); 
+            cin.ignore(10000, '\n'); 
         }
-        else if (choice == 4) break;
-        cout << endl;
-        if (choice!=1){
-            display(head, status);
-            cout << endl;
+
+        switch(choice){
+            case 1:
+                //Displays the list if they want
+                display(head, status);
+                break;
+
+            case 2:
+                //Need the vector to do this
+                cout << "Not implemented yet";
+                break;
+
+            case 3:
+                int loop2;
+                cout << "How many items would you like to add?: ";
+
+                while (!(cin >> loop2)){
+                    cout << "Invalid input:  ";
+                    cin.clear(); 
+                    cin.ignore(10000, '\n'); 
+                }
+                for (int i=0; i < loop2; i++){
+                    add(head);
+                    status.push_back(0);
+                } 
+                break;
+
+            case 4:
+                looper = false;
+                break;
+
+            default:
+                cout << "Invalid Input\n";
+                break;
         }
     cout << endl;
     }
