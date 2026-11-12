@@ -51,6 +51,7 @@ void display(Node* front, vector<int> v) {
         } else if (v[i] == 2) {
             cout << "(Completed)";
         }
+        i++;
         
         if (current->next != nullptr) cout << ",";
         cout << " ";
@@ -63,6 +64,20 @@ void add(Node*& head){
     cout << "Add an item to the list: ";
     getline(cin >> ws, listpoint); //std::ws extracts whitespace in buffer
     insertEnd(head, listpoint);
+}
+
+void change(Node*& front, vector<int>& v){
+    int i=0;
+    int status_change;
+    cout << endl;
+    for (Node* current = front; current != nullptr; current = current->next){
+        cout << current->data << endl;
+        cout << "What is the status of this item? ";
+        cout << "[0] Not Started, [1] In Progress, or [2] Completed: ";
+        cin >> status_change;
+        v[i]=status_change;
+        i++;
+    }
 }
 
 int main(){
@@ -87,6 +102,7 @@ int main(){
 
     cout << endl;
     display(head, status);
+    cout << endl;
 
     bool looper=true;
     while (looper==true){ //Loops the program until the user is done.
@@ -113,8 +129,8 @@ int main(){
                 break;
 
             case 2:
-                //Need the vector to do this
-                cout << "Not implemented yet";
+                //Change the status
+                change(head, status);
                 break;
 
             case 3:
