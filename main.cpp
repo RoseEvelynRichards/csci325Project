@@ -41,22 +41,18 @@ void display(Node* front, vector<int> v) {
         cout << "There is nothing in this list." << endl;
         return;
     }
+    int i=0;
     for (Node* current = front; current != nullptr; current = current->next){
-        cout << current->data;
+        cout << current->data << " ";
+        if (v[i] == 0) {
+            cout << "(Not Started)";
+        } else if (v[i] == 1) {
+            cout << "(In Progress)";
+        } else if (v[i] == 2) {
+            cout << "(Completed)";
+        }
         
         if (current->next != nullptr) cout << ",";
-        cout << " ";
-    }
-    cout << endl;
-    for (int i = 0; i < v.size(); i++) {
-        if (v[i] == 0) {
-            cout << "Not Started";
-        } else if (v[i] == 1) {
-            cout << "In Progress";
-        } else if (v[i] == 2) {
-            cout << "Completed";
-        }
-        if (i + 1 < v.size()) cout << ",";
         cout << " ";
     }
     cout << endl;
